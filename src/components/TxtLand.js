@@ -33,6 +33,31 @@ export default function TxtLand(props) {
     const handleItalic = () => {
         document.getElementById('preview').innerHTML = Text.italics();
     }
+    const handleReverse = () => {
+        let revText = Text.split('').reverse().join('');
+        setText(revText);
+    }
+    const handleSlug = () => {
+        let slug = Text
+            .toLowerCase()
+            .trim()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_-]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+        setText(slug);
+    }
+    const handleSwap = () => {
+        const swap = Text.replace(/(\w+)\s(\w+)/, "$2 $1");
+        setText(swap);
+    }
+    const handleSort = () => {
+        let sortText = Text.toLowerCase().split(/\s+/).sort().join(" ");
+        setText(sortText);
+    }
+    const handleRmvSpace = () => {
+        let spaceRemovedText = Text.split(/[ ]+/);
+        setText(spaceRemovedText.join(" "));
+    }
     return (
         <>
             <div className='container mt-4'>
@@ -45,12 +70,17 @@ export default function TxtLand(props) {
                 <textarea className='form-control' name="textBox" value={Text} id="txtBox" cols="30" rows="10" onChange={handleChange} placeholder='Enter Something'></textarea>
                 <div className='my-3'>
                     <button className='btn btn-warning mx-1' onClick={handleDummy}>Dummy</button>
-                    <button className='btn btn-secondary mx-1' onClick={handleTruncate}>Truncate</button>
-                    <button className='btn btn-danger mx-1' onClick={handleClear}>Clear</button>
-                    <button className='btn btn-primary mx-1' onClick={handleUpperCase}>UPPERCASE</button>
-                    <button className='btn btn-info mx-1' onClick={handleLowerCase}>lowercase</button>
-                    <button className='btn btn-success mx-1' onClick={handleCopy}>Copy</button>
-                    <button style={{ backgroundColor: '#D54B01', border: 'none' }} className='btn btn-success mx-1' onClick={handleItalic}>Italic</button>
+                    <button disabled={Text.length === 0} className='btn btn-secondary mx-1' onClick={handleTruncate}>Truncate</button>
+                    <button disabled={Text.length === 0} className='btn btn-danger mx-1' onClick={handleClear}>Clear</button>
+                    <button disabled={Text.length === 0} className='btn btn-primary mx-1' onClick={handleUpperCase}>UPPERCASE</button>
+                    <button disabled={Text.length === 0} className='btn btn-info mx-1' onClick={handleLowerCase}>lowercase</button>
+                    <button disabled={Text.length === 0} className='btn btn-success mx-1' onClick={handleCopy}>Copy</button>
+                    <button disabled={Text.length === 0} style={{ backgroundColor: '#D54B01', border: 'none' }} className='btn btn-success mx-1' onClick={handleItalic}>Italic</button>
+                    <button disabled={Text.length === 0} className='btn btn-danger mx-1' onClick={handleReverse}>Reverse</button>
+                    <button disabled={Text.length === 0} className='btn btn-secondary mx-1' onClick={handleSlug}>URL slug</button>
+                    <button disabled={Text.length === 0} className='btn btn-success mx-1' onClick={handleSwap}>Swap</button>
+                    <button disabled={Text.length === 0} className='btn btn-primary mx-1' onClick={handleSort}>SORT a-z</button>
+                    <button disabled={Text.length === 0} className='btn btn-warning mx-1' onClick={handleRmvSpace}>RMV Space</button>
                 </div>
             </div>
             <div className="container">
