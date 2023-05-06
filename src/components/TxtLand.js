@@ -5,6 +5,7 @@ export default function TxtLand(props) {
     const handleChange = (e) => {
         setText(e.target.value);
     }
+
     const handleDummy = () => {
         setText('Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci corporis suscipit cupiditate asperiores esse totam cumque ipsa repellat, rerum, magnam necessitatibus deleniti quia fugiat laudantium odit accusamus iusto eaque sit, officiis similique. Inventore corporis illo amet architecto laudantium. Accusantium dolores est iure eaque ut facilis alias velit earum, at perspiciatis voluptatem recusandae omnis, iste delectus culpa veniam sapiente veritatis. Aliquid neque saepe consectetur atque vitae cupiditate. Dolores magni enim, autem blanditiis eaque veritatis saepe commodi? Tempora qui doloremque rem id velit sunt delectus corrupti, repellendus quos dolore enim officiis, assumenda, sit at minima ipsa doloribus perferendis! Dicta eveniet similique reiciendis?');
     }
@@ -23,12 +24,15 @@ export default function TxtLand(props) {
     }
     const handleUpperCase = () => {
         setText(Text.toUpperCase());
+
     }
     const handleLowerCase = () => {
         setText(Text.toLowerCase());
+
     }
     const handleCopy = () => {
         navigator.clipboard.writeText(Text);
+        alert('text-copied');
     }
     const handleItalic = () => {
         document.getElementById('preview').innerHTML = Text.italics();
@@ -67,7 +71,7 @@ export default function TxtLand(props) {
             </div>
 
             <div className="container my-4">
-                <textarea className='form-control' name="textBox" value={Text} id="txtBox" cols="30" rows="10" onChange={handleChange} placeholder='Enter Something'></textarea>
+                <textarea className='form-control' name="textBox" value={Text} id="txtBox" cols="30" rows="7" onChange={handleChange} placeholder='Enter Something'></textarea>
                 <div className='my-3'>
                     <button className='btn btn-warning mx-1' onClick={handleDummy}>Dummy</button>
                     <button disabled={Text.length === 0} className='btn btn-secondary mx-1' onClick={handleTruncate}>Truncate</button>
@@ -84,8 +88,17 @@ export default function TxtLand(props) {
                 </div>
             </div>
             <div className="container">
+                <h1>Text Summary</h1>
+                <p>{Text.length} Characters,
+                    {Text.split(/\s+/).filter((el) => { return el.length !== 0 }).length} Words,
+                    {Text.split("\n").filter(el => el.length !== 0).length} lines,
+                    <b>{Text.match(/[aeiou]/gi) ? Text.match(/[aeiou]/gi).length : '0'}</b> Vowels</p>
+                <p><b>{0.008 * Text.split(/\s+/).filter(el => el.length !== 0).length}</b>  - Minutes Read</p>
+                <hr />
                 <h2>Preview</h2>
-                <p id='preview'>{Text}</p>
+                <p id='preview'>
+                    {Text.split(/\s+/).filter(el => el.length !== 0).length > 0 ? Text : 'Nothing to preview'}
+                </p>
             </div>
         </>
 
