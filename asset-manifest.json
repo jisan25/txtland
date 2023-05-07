@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/txtland/static/css/main.7930e893.css",
+    "main.js": "/txtland/static/js/main.07b9531a.js",
+    "static/js/787.82170c03.chunk.js": "/txtland/static/js/787.82170c03.chunk.js",
+    "index.html": "/txtland/index.html",
+    "main.7930e893.css.map": "/txtland/static/css/main.7930e893.css.map",
+    "main.07b9531a.js.map": "/txtland/static/js/main.07b9531a.js.map",
+    "787.82170c03.chunk.js.map": "/txtland/static/js/787.82170c03.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7930e893.css",
+    "static/js/main.07b9531a.js"
+  ]
+}

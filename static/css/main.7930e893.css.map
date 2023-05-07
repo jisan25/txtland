@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.7930e893.css","mappings":"AAAA,kCACE,UAAY,CACZ,UACF,CAHA,oBACE,UAAY,CACZ,UACF","sources":["App.css"],"sourcesContent":["#myBox::placeholder {\r\n  color: white;\r\n  opacity: 0.5;\r\n}\r\n"],"names":[],"sourceRoot":""}
