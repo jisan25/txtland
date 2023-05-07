@@ -2,6 +2,17 @@ import React, { useState } from 'react'
 
 export default function TxtLand(props) {
     const [Text, setText] = useState('');
+
+    let darkMode = {
+        color: props.mode !== 'light' && 'white'
+    }
+
+    let darkModeTextArea = {
+        backgroundColor: props.mode !== 'light' && '#042743',
+        color: props.mode !== 'light' && 'white'
+    }
+
+
     const handleChange = (e) => {
         setText(e.target.value);
     }
@@ -64,14 +75,14 @@ export default function TxtLand(props) {
     }
     return (
         <>
-            <div className='container mt-4'>
+            <div className='container mt-4' style={darkMode}>
                 <h1 style={{ fontSize: '60px' }} className='text-center'>{props.title.toUpperCase()}</h1>
                 <p className='text-center' style={{ fontWeight: 'normal', fontSize: '20px' }}>text to uppercase | lowercase | remove space | word count | reverse | swap | copy | & many more</p>
 
             </div>
 
             <div className="container my-4">
-                <textarea className='form-control' name="textBox" value={Text} id="txtBox" cols="30" rows="7" onChange={handleChange} placeholder='Enter Something'></textarea>
+                <textarea id={`${props.mode !== 'light' ? 'myBox' : ''}`} className='form-control' style={darkModeTextArea} name="textBox" value={Text} cols="30" rows="7" onChange={handleChange} placeholder='Enter Something'></textarea>
                 <div className='my-3'>
                     <button className='btn btn-warning mx-1' onClick={handleDummy}>Dummy</button>
                     <button disabled={Text.length === 0} className='btn btn-secondary mx-1' onClick={handleTruncate}>Truncate</button>
@@ -87,7 +98,7 @@ export default function TxtLand(props) {
                     <button disabled={Text.length === 0} className='btn btn-warning mx-1' onClick={handleRmvSpace}>RMV Space</button>
                 </div>
             </div>
-            <div className="container">
+            <div className="container" style={darkMode}>
                 <h1>Text Summary</h1>
                 <p>{Text.length} Characters,
                     {Text.split(/\s+/).filter((el) => { return el.length !== 0 }).length} Words,
