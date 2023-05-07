@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Footer from './Footer';
 
 export default function TxtLand(props) {
     const [Text, setText] = useState('');
@@ -111,6 +112,7 @@ export default function TxtLand(props) {
                     {Text.split(/\s+/).filter(el => el.length !== 0).length > 0 ? Text : 'Nothing to preview'}
                 </p>
             </div>
+            <Footer />
         </>
 
     )

@@ -17,7 +17,7 @@ function App() {
 
   const handleUpdate = () => {
     if (title === '') {
-      alert('Title cant be empty');
+      return alert('Title cant be empty');
     }
     setTitle(title);
     alert('Title Changed');
@@ -39,7 +39,7 @@ function App() {
         <Route path="/" element={<Navbar title={title} handleUpdate={handleUpdate}
           handleChange={handleChange} toggleMode={toggleMode} mode={mode} />}>
           <Route index element={<TxtLand title={title} mode={mode} />} />
-          <Route path="about" element={<About />} />
+          <Route path="about" element={<About mode={mode} />} />
         </Route>
       </Routes>
     </BrowserRouter>
